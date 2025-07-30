@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --accent: #2bafa2;
+  --bg: #0d0d0d;
+  --text: #f0f0f0;
+  --glow: #1fffe0;
+  
+  /* Responzivní hodnoty */
+  --container-padding: clamp(1rem, 4vw, 3rem);
+  --section-gap: clamp(2rem, 6vw, 4rem);
+  --element-gap: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--container-padding);
+  min-height: 100vh;
+  max-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* LOGO a HERO */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  flex-shrink: 0;
+}
+
+.logo {
+  width: clamp(80px, 15vw, 120px);
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  filter: drop-shadow(0 0 40px rgba(43, 175, 162, 0.35));
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: logoIn 1s cubic-bezier(.5,1.5,.5,1) 0.5s forwards;
+}
+
+@keyframes logoIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* ODKAZY */
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #1fffe0;
+  text-decoration: none;
+}
+
+a:active {
+  color: #134d47;
+}
+
+/* FORM WRAPPER + ANIMACE */
+
+#email-form,
+#thank-you {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto var(--element-gap);
+  transition: all 0.5s ease;
+  min-height: clamp(100px, 15vw, 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+}
+
+#email-form.hidden,
+#thank-you.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+/* FORMULÁŘ */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--element-gap);
+  width: 100%;
+}
+
+input[type="email"] {
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(0.8rem, 2.5vw, 1rem);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  border-radius: clamp(4px, 1vw, 6px);
+  border: none;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+input[type="email"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+button {
+  width: 100%;
+  background-color: var(--accent);
+  color: #000;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(0.8rem, 2.5vw, 1rem);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  border-radius: clamp(4px, 1vw, 6px);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #239a8f;
+  box-shadow: 0 0 15px rgba(43, 175, 162, 0.4);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* PODĚKOVÁNÍ */
+
+#thank-you {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.5;
+}
+
+#thank-you p {
+  margin: 0;
+}
+
+/* FADE-IN STRÁNKY */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInBody 1s ease 0.2s forwards;
+}
+
+@keyframes fadeInBody {
+  to {
+    opacity: 1;
+  }
+}
+
+/* COUNTDOWN */
+
+.countdown {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+  width: 100%;
+  max-width: 600px;
+  flex-shrink: 0;
+}
+
+.countdown p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  margin-bottom: clamp(0.5rem, 1vw, 0.8rem);
+}
+
+#countdown-timer {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: clamp(0.3rem, 1vw, 0.5rem);
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+footer .countdown {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+footer p {
+  font-size: clamp(0.8rem, 2vw, 0.85rem);
+  color: #888;
+  text-align: center;
+}
+
+#socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+  margin-top: clamp(1rem, 2vh, 1.5rem);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#socials a {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.3rem, 1vw, 0.5rem);
+  color: var(--text);
+  background: rgba(43, 175, 162, 0.08);
+  border-radius: clamp(6px, 1.5vw, 8px);
+  padding: clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  transition: all 0.3s ease;
+  flex: 0 1 auto;
+  min-width: clamp(120px, 20vw, 160px);
+  justify-content: center;
+}
+
+#socials a:hover {
+  background: rgba(43, 175, 162, 0.18);
+  color: var(--accent);
+  box-shadow: 0 0 15px rgba(31, 255, 224, 0.3);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+#socials img {
+  width: clamp(20px, 4vw, 24px);
+  height: clamp(20px, 4vw, 24px);
+  display: block;
+  filter: drop-shadow(0 0 2px #fff);
+  flex-shrink: 0;
+}
+
+/* MAILERLITE FORM STYLING */
+
+.ml-embedded {
+  width: 100%;
+  max-width: 350px;
+}
+
+.ml-form-embedContainer input[type="email"] {
+  background-color: #333 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.8rem 1rem !important;
+  font-size: 1rem !important;
+  border-radius: 6px !important;
+  width: 100% !important;
+}
+
+.ml-form-embedContainer button {
+  background-color: var(--accent) !important;
+  color: #000 !important;
+  border: none !important;
+  font-weight: bold !important;
+  border-radius: 6px !important;
+  padding: 0.8rem 1rem !important;
+  font-size: 1rem !important;
+  width: 100% !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ml-form-embedContainer button:hover {
+  background-color: #239a8f !important;
+  box-shadow: 0 0 10px #2bafa2 !important;
+}
+
+/* Skrytí nepotřebných stylů */
+.ml-form-embedContainer .ml-form-embedWrapper {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.ml-form-embedContainer .ml-form-embedBody {
+  padding: 0 !important;
+}
+
+/* MOBILNÍ RESPONSIVITA - POKROČILÉ MEDIA QUERIES */
+
+/* Extra malé displeje */
+@media (max-width: 350px) {
+  :root {
+    --container-padding: 0.8rem;
+    --element-gap: 0.6rem;
+  }
+  
+  body {
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+  
+  #socials {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  
+  #socials a {
+    min-width: unset;
+    max-width: unset;
+  }
+}
+
+/* Malé telefony */
+@media (max-width: 480px) and (orientation: portrait) {
+  :root {
+    --container-padding: clamp(0.8rem, 2vw, 1.5rem);
+  }
+  
+  body {
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    padding-top: clamp(0.8rem, 2vw, 1.5rem);
+    padding-bottom: clamp(0.8rem, 2vw, 1.5rem);
+  }
+  
+  #socials a {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 120px;
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  }
+}
+
+/* Tablety */
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --container-padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  
+  body {
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  .hero {
+    max-width: 700px;
+  }
+  
+  #socials {
+    justify-content: center;
+    gap: 1.2rem;
+  }
+  
+  #socials a {
+    flex: 0 1 auto;
+    min-width: 130px;
+    max-width: 150px;
+  }
+}
+
+/* Landscape telefony a malé tablety */
+@media (min-width: 480px) and (max-width: 768px) {
+  #socials a {
+    flex: 1 1 calc(50% - 0.6rem);
+    min-width: 140px;
+  }
+}
+
+/* Desktop a velké tablety */
+@media (min-width: 1025px) {
+  :root {
+    --container-padding: clamp(2rem, 3vw, 3rem);
+  }
+  
+  body {
+    max-width: 1200px;
+    margin: 0 auto;
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  #socials {
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+  }
+  
+  #socials a {
+    flex: 0 1 auto;
+    min-width: 150px;
+    max-width: 180px;
+    font-size: 1rem;
+  }
+}
+
+/* Výška viewport optimalizace */
+@media (max-height: 600px) and (orientation: landscape) {
+  :root {
+    --container-padding: clamp(0.5rem, 1vh, 1rem);
+  }
+  
+  body {
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  .logo {
+    width: clamp(60px, 12vw, 80px);
+    margin-bottom: clamp(0.5rem, 2vh, 1rem);
+  }
+  
+  h1 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    margin-bottom: clamp(0.5rem, 2vh, 1rem);
+  }
+  
+  .hero {
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  }
+  
+  .countdown {
+    margin-top: clamp(0.8rem, 2vh, 1.2rem);
+  }
+  
+  footer {
+    margin-top: clamp(0.8rem, 2vh, 1.2rem);
+  }
+  
+  #socials {
+    margin-top: clamp(0.5rem, 1vh, 0.8rem);
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+  }
+}
+
+/* Velmi vysoké obrazovky */
+@media (min-height: 900px) {
+  body {
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  .hero {
+    margin-bottom: clamp(3rem, 5vh, 4rem);
+  }
+  
+  .countdown {
+    margin-top: clamp(2rem, 4vh, 3rem);
+  }
+  
+  footer {
+    margin-top: clamp(2rem, 4vh, 3rem);
+  }
+}
